@@ -8,10 +8,13 @@ const generateFileName = function() {
   return './${(new Date).getTime()}.html';
 }
 
-const generate = async function(username, color) {
+const generate = async function(username, color, data) {
   const template = await readFilePromise("./template.html", "utf-8");
   const htmlString = template.replace(new RegExp('\\#\\[username\\]\\#', 'g'), username)
-                              .replace(new RegExp('\\#\\[color\\]\\#', 'g'), color);
+                              .replace(new RegExp('\\#\\[color\\]\\#', 'g'), color)
+                              .replace(new RegExp('\\#\\[data.public_repo\\]\\#', 'g'), data.public_repos)
+                              .replace(new RegExp('\\#\\[data.followers\\]\\#', 'g'), data.followers)
+                              .replace(new RegExp('\\#\\[data.following\\]\\#', 'g'), data.following);
   
   await writeFilePromise(generateFileName(), htmlString);
 }
