@@ -16,8 +16,8 @@ function getUserInput() {
             name: 'color',
             choices: [
                 {
-                    name: 'Red',
-                    value: 'red'
+                    name: 'Green',
+                    value: 'green'
                 },
                 {
                     name: 'Blue',
@@ -25,11 +25,11 @@ function getUserInput() {
                 },
                 {
                     name: 'Pink',
-                    value: 'blue'
+                    value: 'pink'
                 },
                 {
-                    name: 'Green',
-                    value: 'blue'
+                    name: 'Red',
+                    value: 'red'
                 },
             ]
         }

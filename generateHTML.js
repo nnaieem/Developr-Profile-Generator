@@ -5,7 +5,7 @@ const readFilePromise = util.promisify(fs.readFile);
 const writeFilePromise = util.promisify(fs.writeFile);
 
 const generateFileName = function() {
-  return './${(new Date).getTime()}.html';
+  return './generatedProfile.html';
 }
 
 const generate = async function(username, color, data) {
@@ -14,7 +14,12 @@ const generate = async function(username, color, data) {
                               .replace(new RegExp('\\#\\[color\\]\\#', 'g'), color)
                               .replace(new RegExp('\\#\\[data.public_repo\\]\\#', 'g'), data.public_repos)
                               .replace(new RegExp('\\#\\[data.followers\\]\\#', 'g'), data.followers)
-                              .replace(new RegExp('\\#\\[data.following\\]\\#', 'g'), data.following);
+                              .replace(new RegExp('\\#\\[data.following\\]\\#', 'g'), data.following)
+                              .replace(new RegExp('\\#\\[data.name\\]\\#', 'g'), data.name)
+                              .replace(new RegExp('\\#\\[data.bio\\]\\#', 'g'), data.bio)
+                              .replace(new RegExp('\\#\\[data.company\\]\\#', 'g'), data.company)
+                              .replace(new RegExp('\\#\\[data.username\\]\\#', 'g'), data.username)
+                              .replace(new RegExp('\\#\\[data.location\\]\\#', 'g'), data.location);
   
   await writeFilePromise(generateFileName(), htmlString);
 }
